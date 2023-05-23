@@ -3,31 +3,243 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import React from 'react'
 import './App.css'
+import { ReactDOM } from 'react'
+import boxes from './boxes'
+import Box from './box'
 
-function App() {
 
-  const [count,setCount] =   React.useState(0)
 
-  function Add() {
-      setCount( prevCount => prevCount + 1
+export default function App() {
+
+    const [square, setsquare] = React.useState(boxes.map(
+        (params)=> {
+          return (
+            <Box  key={params.id} 
+                  id={params.id}
+                  on={params.on}
+            />
+          )
+        }
+    ))
+
+    
+    
+
+
+
+    
+
+     return( 
+         <main>
+            <div className='space-x-2 flex flex-row'>{square}</div>
+         </main>
+     )
+}
+
+
+
+
+
+/*
+border-2 border-black bg-black rounded-lg w-96 h-40 mt-10'
+
+
+className='flex flex-row space-x-6' */
+
+
+
+
+
+
+
+
+
+
+
+
+/*export default function App(params) {
+    const [contact, setContact] = React.useState(
+        {
+            Firstname : 'opeyemil',
+            LastName : 'Toheeb',
+            phone : 8180152128,
+            email : 'opeyemitoheeb31@gmail.com',
+            isFavorite : true
+        }
+    )
+
+ 
+    const change = contact.isFavorite ? 'ronaldo' : 'messi'
+
+   function Toggle(params) {
+       setContact(
+        (prevState) => {
+            return{
+               ...prevState,
+               isFavorite: !prevState.isFavorite
+            }
+        }
+       )  
+    }
+
+
+    return (
+        <main>
+            <article className="card">
+                <button onClick={Toggle}>button</button>
+                <p>{change}</p>
+                <div className="card--info">
+                    <h2 className="card--name">
+                        {contact.Firstname}
+                    </h2>
+                    <p className="card--contact">{contact.phone}</p>
+                    <p className="card--contact">{contact.email}</p>
+                </div>
+            </article>
+        </main>
+    )
+    
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*export default function App(params) {
+
+
+const [thingsArray, setThingsArray] = React.useState([
+    'things 1', 'things 2'
+])
+
+const ThingsDisplay = thingsArray.map(
+    (things) => {
+        return(
+            <p key={things}>{things}</p>
         )
-  }
+    }
+)
 
-  function Substract() {
-     setCount(prevCount => prevCount + 1  )
-  }
+function add(params) {
+    setThingsArray(
+        (prevState)=> {
+           return [...prevState, `Things${prevState.length +1}`] 
+        }
+    )
+}
+
+console.log(ThingsDisplay)
+
 
     return(
-       <section className="mx-auto flex w-full  bg-red-900">
+        <div>
+            <button onClick={add}> add
+            </button>
+           {ThingsDisplay}
+        </div>
+    )
+}
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*export default  function App() {
+
+const [isGoingOut, setIsGoingOut] = React.useState(true)
+
+function Flip(params) {
+    setIsGoingOut(
+        (prevState) => {
+            return !prevState
+        }
+    )
+}
+
+ 
+
+  return (
+    <div className="text-white text-center bg-black text-4xl mt-80">
+        <h1 className="state--title">Do I feel like going out tonight?</h1>
+        <div className="mt-10 text-center mx-auto flex justify-center" onClick={Flip}>
+            <h1 className='border py-6 px-4 rounded-full bg-white text-black'>{isGoingOut ? 'yes' : 'No'}</h1>
+        </div>
+    </div>
+)
+ 
+}   */
+
+
+/*import Count from './count'
+
+
+
+export default function App(params) {
+
+const [count, setCount] = React.useState(0)
+
+function Add(params) {
+    setCount(prevState => 
+        (
+            prevState + 1
+        )
+    )
+}
+
+
+function Subtract(params) {
+     setCount(function (oldValue) {
+        return(
+            oldValue - 1
+        )
+     })
+}
+
+ console.log("App component rendered")
+
+    return(
+        <section className="mx-auto flex w-full  bg-red-900">
             <div className='flex w-1/2 mx-auto space-x-4'>
-            <button className="bg-gray-500 p-5 h-6 mt-20 pb-10 rounded-full" onClick={Substract}>–</button>
-            <div className="counter--count">
-                <h1 className='bg-white p-20 rounded-full text-6xl font-bold'>{count}</h1>
-            </div>
+            <button className="bg-gray-500 p-5 h-6 mt-20 pb-10 rounded-full" onClick={Subtract}>–</button>
+             <Count number={count}/>
             <button className="bg-gray-500 p-5 h-6 mt-20 pb-10 rounded-full" onClick={Add}>+</button>
             </div>
         </section>
     )
-}
+}  
+ 
 
-export default App
+    
+   */ 
