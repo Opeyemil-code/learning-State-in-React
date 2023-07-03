@@ -9,18 +9,30 @@ import Box from './box'
 
 
 
-export default function App() {
 
-    const [square, setsquare] = React.useState(boxes.map(
-        (params)=> {
-          return (
-            <Box  key={params.id} 
-                  id={params.id}
-                  on={params.on}
-            />
-          )
+export default function App(props) {
+
+    
+const [squares, setSquares] = React.useState(boxes)
+ 
+
+function Toggle(params) {
+    setcontrol(prev => {
+       return !prev
+    })
+  }
+
+
+
+    const squareEl = squares.map(
+        (params) => {
+            return <Box
+                key={params.id} 
+                id={params.id}
+                on={params.on} 
+                Toggle={Toggle}/>
         }
-    ))
+    )
 
     
     
@@ -31,7 +43,7 @@ export default function App() {
 
      return( 
          <main>
-            <div className='space-x-2 flex flex-row'>{square}</div>
+            <div className='space-x-2 flex flex-row'>{squareEl}</div>
          </main>
      )
 }
@@ -50,8 +62,27 @@ className='flex flex-row space-x-6' */
 
 
 
-
-
+/*setsquare(
+    (prev) => {
+       const newSquares = []
+       for (let i = 0; i < prev.length; i++) {
+        const currentSquare = prev[i]
+        if (currentSquare.id === id) {
+            const updatedSquare = {
+                ...currentSquare, on : !currentSquare.on
+            }
+            console.log(id)
+            newSquares.push(updatedSquare)
+        } else {
+            newSquares.push(currentSquare)
+        }
+        
+       } 
+       return newSquares
+    }
+    
+   ) 
+*/
 
 
 
