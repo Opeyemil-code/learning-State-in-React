@@ -8,17 +8,56 @@ import boxes from './boxes'
 import Box from './box'
 
 
+export default function App(params) {
+
+  const [email, setEmail] = React.useState('');
+
+  const [password, setPassword] = React.useState('')
+
+  function updateEmail(event) {
+      setEmail(prev => event.target.value)
+      console.log(email)
+  }
+
+  function updatePassword(event) {
+      setPassword(prev => event.target.value)
+      console.log(password)
+  }
 
 
-export default function App(props) {
+    return(
+        <>
+        <form action="" className='flex flex-col  border-black w-40 mx-auto space-y-6'>
+            <input type="email"
+             name=""
+             id="" 
+             placeholder='Gmail' className='border-2 border-black'
+             onChange={updateEmail}/>
+
+             <input type="password"
+             name="" 
+             id=""
+             placeholder='last Name'
+             className='border-2 border-black'
+             onChange={updatePassword}/>
+        </form>
+        </>
+    )
+}
+
+
+
+/*export default function App(props) {
 
     
 const [squares, setSquares] = React.useState(boxes)
  
 
-function Toggle(params) {
-    setcontrol(prev => {
-       return !prev
+function Toggle(id) {
+    setSquares(prev => {
+       return prev.map((square)=> {
+          square.id === id ? {...square, on : !square.on} : square
+       })
     })
   }
 
@@ -34,12 +73,7 @@ function Toggle(params) {
         }
     )
 
-    
-    
-
-
-
-    
+  
 
      return( 
          <main>
@@ -47,7 +81,7 @@ function Toggle(params) {
          </main>
      )
 }
-
+*/
 
 
 
