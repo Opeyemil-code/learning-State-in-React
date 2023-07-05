@@ -8,7 +8,44 @@ import boxes from './boxes'
 import Box from './box'
 
 
+
 export default function App(params) {
+
+ 
+
+const [form, setForm] = React.useState({gmail : '', password: ''})
+
+
+function FORM(event) {
+    setForm(prev => {
+        return{
+            ...prev, [event.target.name] : event.target.value
+        }
+
+    })
+  console.log(form)
+}
+
+
+    return(
+        <form action="">
+            <input type="email"
+             name="gmail" 
+             id="" 
+             placeholder='gmail'
+             onChange={FORM}/>
+
+             <input type="password"
+              name="password"
+             id=""
+             placeholder='gmail' 
+             onChange={FORM}/>
+        </form>
+    )
+}
+
+
+/*  export default function App(params) {
 
   const [email, setEmail] = React.useState('');
 
@@ -43,7 +80,7 @@ export default function App(params) {
         </form>
         </>
     )
-}
+}  */
 
 
 
