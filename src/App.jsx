@@ -6,40 +6,68 @@ import './App.css'
 import { ReactDOM } from 'react'
 import boxes from './boxes'
 import Box from './box'
-
-
+//import form from './form'
+//FORM IN REACT
 
 export default function App(params) {
 
- 
+  const [form, setForm] = React.useState(
+    {
+        email: '',
+        password: '',
+        text : '',
+        checkbox : true,
+    }
+  )
 
-const [form, setForm] = React.useState({gmail : '', password: ''})
+  function Handle(event) {
+  
+    const {type, name, value, checked}  = event.target
 
-
-function FORM(event) {
-    setForm(prev => {
+      setForm(prev => {
         return{
-            ...prev, [event.target.name] : event.target.value
+            ...prev, [name] : type === 'checkbox' ? checked : value
         }
+      })
 
-    })
-  console.log(form)
-}
+      console.log(form)
+  }
 
 
     return(
         <form action="">
             <input type="email"
-             name="gmail" 
-             id="" 
-             placeholder='gmail'
-             onChange={FORM}/>
-
-             <input type="password"
-              name="password"
+             name="email"
              id=""
-             placeholder='gmail' 
-             onChange={FORM}/>
+             onChange={Handle} 
+             placeholder='email'
+             value={form.email}/>
+    
+            <input type="password"
+                name="password"
+                id="" 
+                onChange={Handle}
+                placeholder='password'
+                value={form.password}/>
+
+             <textarea 
+             type="text" name="text"
+             id="" 
+             cols=""
+             rows="" 
+             placeholder='text'
+             value={form.text}
+             onChange={Handle}/>
+
+              <input type="checkbox"
+               name="checkbox"
+               id="mad"
+               onChange={Handle}
+               checked={form.checkbox} />
+
+            <label htmlFor="mad">are you mad</label>
+
+
         </form>
     )
 }
