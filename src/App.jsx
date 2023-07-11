@@ -16,9 +16,12 @@ export default function App(params) {
         email: '',
         password: '',
         text : '',
-        checkbox : true,
+        checkbox : false,
+        employment : ''
     }
   )
+
+  console.log(form.employment)
 
   function Handle(event) {
   
@@ -66,6 +69,48 @@ export default function App(params) {
                checked={form.checkbox} />
 
             <label htmlFor="mad">are you mad</label>
+         
+         <br />
+         <br />
+
+
+         <fieldset>
+
+        <legend>current employment status</legend>
+
+         <input 
+         type="radio"
+         name="employment"
+         id="full-time"
+         value='full-time' 
+         checked={form.employment === 'full-time'}/>
+
+         <label htmlFor="full-time">full time</label>
+
+         <input 
+         type="radio"
+         name="employment"
+         id="part-time" 
+         value='part-time'
+         onChange={Handle}
+         checked={form.employment === 'part-time'}
+         />
+
+         <label htmlFor="part-time">part-time</label>
+
+         <input 
+         type="radio"
+         name="employment"
+         id="freelance"
+         value="freelance"
+         onChange={Handle}
+         checked={form.employment === 'freelance'}/>
+
+         <label htmlFor="freelance">freelance</label>
+
+         
+
+         </fieldset>
 
 
         </form>
