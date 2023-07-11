@@ -9,7 +9,11 @@ import Box from './box'
 //import form from './form'
 //FORM IN REACT
 
-export default function App(params) {
+
+
+
+
+ export default function App(params) {
 
   const [form, setForm] = React.useState(
     {
@@ -17,11 +21,14 @@ export default function App(params) {
         password: '',
         text : '',
         checkbox : false,
-        employment : ''
+        employment : '',
+        favColor: ''
     }
   )
 
   console.log(form.employment)
+
+  console.log(form.favColor)
 
   function Handle(event) {
   
@@ -108,14 +115,25 @@ export default function App(params) {
 
          <label htmlFor="freelance">freelance</label>
 
-         
-
          </fieldset>
 
 
+        <label htmlFor="favColor"></label>
+
+        <select name="favColor" id="favColor" onChange={Handle}>
+          <option value="">select here</option>
+          <option value="green">green</option>
+          <option value="red">red</option>
+          <option value="blue">blue</option>
+          <option value="yellow">yellow</option>
+          <option value="black">black</option>
+
+        </select>
+        
+
         </form>
     )
-}
+} 
 
 
 /*  export default function App(params) {
