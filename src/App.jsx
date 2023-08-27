@@ -6,14 +6,348 @@ import './App.css'
 import { ReactDOM } from 'react'
 import boxes from './boxes'
 import Box from './box'
+import WindowTracker from './width'
 //import form from './form'
-//FORM IN REACT
+
+
+
+export default function App(params) {
+
+ const [show, setShow] = React.useState(true)
+
+
+ function Button(params) {
+    setShow(prev => {
+        return !prev
+    })
+ }
+    return(
+        <div className=''>
+          <button onClick={Button}>
+            toggle windowTracker
+          </button>
+          <WindowTracker 
+          show={show}/>
+        </div>
+    )
+}
 
 
 
 
 
- export default function App(params) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////  MAKING API CALLS **** MAKING API CALLS **** MAKING APIO CALLS///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+export default function App(params) {
+
+  const [form, setform] = React.useState({
+    text : '',
+    number : '',
+    image : ''
+  })
+
+
+
+  const [img, setimg] =React.useState([])
+
+
+  function Button(params) {
+     const random = Math.floor(Math.random() * img.length)
+     const url = img[random].url
+     setform(prev => {
+        return{
+            ...prev, image : url
+        }
+     })
+  }
+
+
+
+  
+
+  React.useEffect(()=> {
+    fetch('https://api.imgflip.com/get_memes')
+    .then(res => res.json())
+    .then(data => setimg(data.data.memes))
+  })
+
+
+function Form(event) {
+    setform(prev => {
+        return{
+            ...prev, [event.target.name] : event.target.value
+        }
+    })
+}
+
+
+ function preventBtn(event) {
+    event.preventDefault()
+ }
+
+
+
+    return(
+       <form action="" onSubmit={preventBtn} className='w-2/3  flex flex-row mx-auto' >
+
+        <input 
+        type="text"
+        name='text'
+        value={form.text}
+        onChange={Form}
+        className='border-black border-2'/>
+
+        <input type="number"
+         id=""
+         name="number"
+         value={form.number}
+         onChange={Form}
+         className='border-black border-2'/>
+
+
+         <img src={form.image} alt="" className='w-40'/>
+
+
+         <div className='bg-green-900'>
+           <h2 className='border border-2 w-40 bg-red-900'>{form.text}</h2>
+           <p className='border border-2 w-40 bg-yellow-900'>{form.number}</p>
+         </div>
+
+
+         <button onClick={Button}>press it</button>
+
+       </form>
+
+    )
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*export default function App(params) {
+
+ const [count, setCount]  = React.useState(1)
+ const [star,setstar] = React.useState({})
+
+
+ React.useEffect(()=> {
+    fetch(`https://swapi.dev/api/people/ ${count}`)
+            .then(res => res.json())
+            .then(data => console.log(data))
+    
+ }, [count])
+
+   return(
+    <div>
+        <pre>{JSON.stringify(star, null, 2)}</pre>
+        <h1>count is {count}</h1>
+        <button onClick={()=> setCount(prev => prev + 1)}>get next character</button>
+    </div>
+   )
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////
+////////////////
+////FORM IN REACT
+///////////////////////
+////////////////////////////////////////////
+////////////////////////////////////////////////////////
+
+
+
+/*export default function App(params) {
+
+const [form, setForm] = React.useState(
+    {
+        email : '',
+        password : '',
+        cpass : "",
+        checkbox : false
+    }
+)
+
+
+console.log(form.email)
+
+function Handle(event) {
+
+    const {type, name, checked, value} = event.target
+
+    setForm(
+        (prev) => {
+            return {
+                ...prev, [name] : type === 'checkbox' ? checked : value
+            }
+        }
+    )
+
+    console.log(form)
+}
+
+function submit(event) {
+    event.preventDefault()
+
+    if (form.checkbox === true) {
+        console.log('thanks for giving newslatter')
+    } 
+    
+          if (form.password === form.cpass) {
+            console.log('Succesfully signed up')
+          } else {
+            console.log('passwords do not match')
+          } 
+}
+
+
+
+
+    return(
+        <section className=' p-40 '>
+            <form className='w-1/2 mx-auto bg-white flex flex-col space-y-8 p-4 rounded-2xl' onSubmit={submit}>
+
+              <input 
+              className='border-2 border-black w-80 mx-auto h-12 rounded-2xl'
+              type="email" 
+              name="email" 
+              id=""
+              placeholder="Email"
+              onChange={Handle}
+              value={form.email} />
+
+             <input 
+             className='border-2 border-black w-80 mx-auto h-12 rounded-2xl'
+             type="password"
+             name="password" 
+             id="" 
+             placeholder='password'
+             onChange={Handle}
+             value={form.password}/>
+
+             <input 
+             className='border-2 border-black w-80 mx-auto h-12 rounded-2xl'
+             type="password"
+             name="cpass"
+             id="" 
+             placeholder='confirm password'
+             onChange={Handle}
+             value={form.cpass}/>
+
+
+             <div
+             className='w- mx-auto flex flex-row space-x-4 '>
+            
+             <input 
+             type="checkbox" 
+             name="checkbox" 
+             id="join"
+             onChange={Handle}
+             checked={form.checkbox} />
+
+             <label htmlFor="join">i want to join the newslatter</label>
+
+             </div>
+
+             <button className='border-2 w-60 mx-auto h-10 bg-purple-600 rounded-lg' type='submit' onChange={Handle}>sign up</button>
+
+
+
+
+            </form>
+        </section>
+    )
+} */
+
+
+/* export default function App(params) {
 
   const [form, setForm] = React.useState(
     {
@@ -43,9 +377,13 @@ import Box from './box'
       console.log(form)
   }
 
+  function submit(event) {
+      event.preventDefault()
+  }
+
 
     return(
-        <form action="">
+        <form action="" onSubmit={submit}>
             <input type="email"
              name="email"
              id=""
@@ -90,7 +428,8 @@ import Box from './box'
          name="employment"
          id="full-time"
          value='full-time' 
-         checked={form.employment === 'full-time'}/>
+         checked={form.employment === 'full-time'}
+         onChange={Handle}/>
 
          <label htmlFor="full-time">full time</label>
 
@@ -129,11 +468,14 @@ import Box from './box'
           <option value="black">black</option>
 
         </select>
+
+
+        <button type='submit'>submit</button>
         
 
         </form>
     )
-} 
+} */
 
 
 /*  export default function App(params) {
